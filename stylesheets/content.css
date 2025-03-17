@@ -26,15 +26,28 @@ html, body {
     display: none;
     width: 100vw;
     height: 100vh;
-    background: url("../img/фон.gif") no-repeat center center;
-    background-size: cover;
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative; /* Для позиционирования элементов внутри */
 }
+
+/* Центрированное изображение поверх всех элементов */
+#centeredImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Заполнит всю ширину */
+    max-width: 1920px; /* Максимальная ширина оригинального размера */
+    height: auto; /* Сохранение пропорций */
+    z-index: 100; /* Размещаем поверх всех элементов */
+    pointer-events: none; /* Чтобы изображение не блокировало клики */
+}
+
 
 /* Контейнер для картинок */
 #curvedImageWrapper {
@@ -52,15 +65,182 @@ html, body {
 
 #korzina {
     position: absolute;
-    left: 53%;
-    top: -8%;
+    width: 20%;
+    height: auto;
+    top: 15%;
+    left: 60%;
 }
 
-#banka {
+#banka, #banka2, #banka3, #banka4, #banka5 {
     position: absolute;
-    left: 25%; /* Стартовая позиция */
-    top: 33%;
-    width: auto;
-    height: auto;
+    width: 3%;
     cursor: grab;
+}
+
+#banka { left: 24%; top: 33%; rotate: 30deg; }
+#banka2 { left: 53%; top: 30%; rotate: -20deg; }
+#banka3 { left: 83%; top: 38%; rotate: 25deg; }
+#banka4 { left: 35%; top: 27%; rotate: -20deg; }
+#banka5 { left: 4%; top: 50%; rotate: -20deg; }
+
+#topHalf, #bottomHalf {
+    width: 100%;
+    height: 50vh;
+}
+
+/* Контейнер для нижней половины экрана */
+/* Общие стили для контейнера */
+#bottomHalf {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden; /* Ограничивает выход текста за пределы контейнера */
+}
+
+/* Общие стили для основного текста */
+.ingredient1, .ingredient2, .ingredient3, .ingredient4, .ingredient5 {
+    position: absolute;
+    font-family: "NFS_by_JLTV";
+    font-size: 40px;
+    color: rgb(199, 199, 199);
+    line-height: 0.8;
+    cursor: pointer;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}
+
+/* Общие стили для скрытого текста */
+.ingredient11, .ingredient22, .ingredient33, .ingredient44, .ingredient55 {
+    position: absolute;
+    font-family: "Helvetica";
+    font-size: 12px;
+    display: none;
+    white-space: nowrap;
+    top: 100%; /* Располагаем под основным текстом */
+    left: 0; /* Выравниваем по левому краю */
+    pointer-events: none; /* Игнорируем клики */
+}
+
+/* Стиль для остановленной анимации и изменения цвета */
+.ingredient1.stopped, .ingredient2.stopped, .ingredient3.stopped, .ingredient4.stopped, .ingredient5.stopped {
+    animation-play-state: paused;
+}
+
+/* Анимация движения текста */
+@keyframes moveText1 {
+    0% { left: 40%; top: 10%; }
+    30% { left: 90%; top: 50%; }
+    70% { left: 20%; top: 90%; }
+    100% { left: 40%; top: 10%; }
+}
+
+@keyframes moveText2 {
+    0% { left: 90%; top: 10%; }
+    30% { left: 10%; top: 90%; }
+    50% { left: 30%; top: 10%; }
+    70% { left: 70%; top: 90%; }
+    100% { left: 90%; top: 10%; }
+}
+
+@keyframes moveText3 {
+    0% { left: 90%; top: 60%; }
+    20% { left: 70%; top: 90%; }
+    50% { left: 10%; top: 60%; }
+    70% { left: 30%; top: 10%; }
+    100% { left: 90%; top: 60%; }
+}
+
+@keyframes moveText4 {
+    0% { left: 10%; top: 90%; }
+    25% { left: 50%; top: 10%; }
+    50% { left: 90%; top: 90%; }
+    75% { left: 50%; top: 10%; }
+    100% { left: 10%; top: 90%; }
+}
+
+@keyframes moveText5 {
+    0% { left: 10%; top: 10%; }
+    20% { left: 50%; top: 90%; }
+    50% { left: 90%; top: 10%; }
+    70% { left: 50%; top: 90%; }
+    100% { left: 10%; top: 10%; }
+}
+
+/* Индивидуальные стили для каждого текста */
+.ingredient1 {
+    animation: moveText1 5s linear infinite;
+}
+
+.ingredient11 {
+    color: #F10880;
+}
+
+.ingredient1.stopped {
+    color: #F10880;
+}
+
+.ingredient2 {
+    animation: moveText2 6s linear infinite;
+}
+
+.ingredient22 {
+    color: #FF2A00;
+}
+
+.ingredient2.stopped {
+    color: #FF2A00;
+}
+
+.ingredient3 {
+    animation: moveText3 5s linear infinite;
+}
+
+.ingredient33 {
+    color: #3CEA24;
+}
+
+.ingredient3.stopped {
+    color: #3CEA24;
+}
+
+.ingredient4 {
+    animation: moveText4 5s linear infinite;
+}
+
+.ingredient44 {
+    color: #00FFD1;
+}
+
+.ingredient4.stopped {
+    color: #00FFD1;
+}
+
+.ingredient5 {
+    animation: moveText5 5s linear infinite;
+}
+
+.ingredient55 {
+    color: #007FFF;
+}
+
+.ingredient5.stopped {
+    color: #007FFF;
+}
+
+/* Стили для картинки градиента */
+/* Общие стили для всех картинок градиентов */
+.gradient {
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 0; /* Прижимаем к нижней границе */
+    left: 0; /* Выравниваем по левому краю */
+    width: 100%; /* Растягиваем на всю ширину контейнера */
+    height: auto; /* Сохраняем пропорции */
+    z-index: 1; /* Картинки находятся под текстами */
+    display: none; /* Изначально скрыты */
+}
+
+/* Стили для текстов */
+.ingredient1, .ingredient2, .ingredient3, .ingredient4, .ingredient5,
+.ingredient11, .ingredient22, .ingredient33, .ingredient44, .ingredient55 {
+    z-index: 2; /* Тексты находятся поверх картинок */
 }

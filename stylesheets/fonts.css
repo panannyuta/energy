@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "NFS_by_JLTV";
+    src: url("../fonts/NFS_by_JLTV.ttf") format("truetype");
+    font-weight: normal; /* Или bold, если жирный */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica-Regular";
+    src: url("../fonts/Helvetica-Regular.ttf") format("truetype");
+    font-weight: 400; /* Или bold, если жирный */
+    font-style: normal;
+}
